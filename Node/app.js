@@ -7,11 +7,8 @@ const userRoute = require('./route/userDataRoute')
 
 const app = express();
 
-
-// Set up middleware
 app.use(express.json());
 app.use(cors())
-
 
 app.use('/api', userRoute)
 
