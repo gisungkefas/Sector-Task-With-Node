@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors")
 const mongoose = require("mongoose");
+require('dotenv').config()
 
 const userRoute = require('./route/userDataRoute')
 
@@ -15,11 +16,11 @@ app.use(cors())
 app.use('/api', userRoute)
 
 mongoose
-  .connect("mongodb+srv://kefasg71:franklin3083@cluster0.kkl2jdh.mongodb.net/")
+  .connect(process.env.MONGODB_URI)
   .then(() => console.log("connected to database"))
   .catch((err) => console.log("Error", err));
 
 
 
-
-app.listen(3001, () => console.log("connected on port 3001"));
+const port = process.env.PORT || 3001
+app.listen(port, () => console.log("connected on port 3001"));
